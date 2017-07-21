@@ -2,7 +2,10 @@
 set(MY_PRODUCT_NUMBER 3)
 set(MY_PRODUCT_VERSION 5)
 set(MY_BUILD_NUMBER 49)
-	
+
+set (QTRootPath "C:\\Qt\\Qt5.6.2\\5.6\\msvc2013_64")
+set (boostRootPath "C:\\boost\\boost_1_59_0")
+
 file (GLOB MyProjectBin_src
       "${PROJECT_SOURCE_DIR}/app/PcapReplayer/*.cpp"
       "${PROJECT_SOURCE_DIR}/app/PcapReplayer/*.h"
@@ -13,17 +16,17 @@ file (GLOB MyProjectBin_src
 
 # include_directories (${PROJECT_SOURCE_DIR}/lib/ui/PcapReplayer)
 include_directories (${PROJECT_SOURCE_DIR}/lib/WpdPack/Include
-					${PROJECT_SOURCE_DIR}/../3rd_party/boost_1_59_0
+					${boostRootPath}
 					${PROJECT_SOURCE_DIR}/lib/SystemService
 					${PROJECT_SOURCE_DIR}/app/PcapReplayer
 					${PROJECT_SOURCE_DIR}/app/PcapReplayer/ConditionChecker
 					${PROJECT_SOURCE_DIR}/app/PcapReplayer/PcapReader
 					${PROJECT_SOURCE_DIR}/lib/ui/PcapReplayer
-					${PROJECT_SOURCE_DIR}/../3rd_party/Qt5.6.0/5.6/msvc2013_64/include
-					${PROJECT_SOURCE_DIR}/../3rd_party/Qt5.6.0/5.6/msvc2013_64/include/QtWidgets
-					${PROJECT_SOURCE_DIR}/../3rd_party/Qt5.6.0/5.6/msvc2013_64/include/QtGui
-					${PROJECT_SOURCE_DIR}/../3rd_party/Qt5.6.0/5.6/msvc2013_64/include/include/QtCore
-					${PROJECT_SOURCE_DIR}/../3rd_party/Qt5.6.0/5.6/msvc2013_64/mkspecs/win32-msvc2013)
+					${QTRootPath}/include
+					${QTRootPath}/include/QtWidgets
+					${QTRootPath}/include/QtGui
+					${QTRootPath}/include/include/QtCore
+					${QTRootPath}/mkspecs/win32-msvc2013)
 
 # Set Properties->General->Configuration Type to Application(.exe)
 # Creates PcapReplayer.exe with the listed sources (maindialog.cpp)
@@ -39,42 +42,42 @@ add_dependencies(PcapReplayer SystemService PcapReplayUI)
 
 # ${PROJECT_SOURCE_DIR}/lib/ui/PcapReplayer/resource.qrc
 
-set(QTLibPath "C:\\Qt\\Qt5.6.2\\5.6\\msvc2013_64\\lib")
+
 # Properties->Linker->Input->Additional Dependencies
 #target_link_libraries (PcapReplayer ${MyProjectLib_link})
 target_link_libraries (PcapReplayer 
 						debug ${PROJECT_SOURCE_DIR}/lib/WpdPack/Lib/x64/wpcap.lib
 						debug ${PROJECT_SOURCE_DIR}/lib/WpdPack/Lib/x64/Packet.lib
-						debug ${PROJECT_SOURCE_DIR}/../3rd_party/boost_1_59_0/lib64-msvc-12.0/libboost_log-vc120-mt-gd-1_59.lib
-						debug ${PROJECT_SOURCE_DIR}/../3rd_party/boost_1_59_0/lib64-msvc-12.0/libboost_system-vc120-mt-gd-1_59.lib
-						debug ${PROJECT_SOURCE_DIR}/../3rd_party/boost_1_59_0/lib64-msvc-12.0/libboost_filesystem-vc120-mt-gd-1_59.lib
-						debug ${PROJECT_SOURCE_DIR}/../3rd_party/boost_1_59_0/lib64-msvc-12.0/libboost_date_time-vc120-mt-gd-1_59.lib
-						debug ${PROJECT_SOURCE_DIR}/../3rd_party/boost_1_59_0/lib64-msvc-12.0/libboost_thread-vc120-mt-gd-1_59.lib
-						debug ${PROJECT_SOURCE_DIR}/../3rd_party/boost_1_59_0/lib64-msvc-12.0/libboost_log_setup-vc120-mt-gd-1_59.lib
-						debug ${PROJECT_SOURCE_DIR}/../3rd_party/boost_1_59_0/lib64-msvc-12.0/libboost_chrono-vc120-mt-gd-1_59.lib
-						debug ${PROJECT_SOURCE_DIR}/../3rd_party/boost_1_59_0/lib64-msvc-12.0/libboost_regex-vc120-mt-gd-1_59.lib
+						debug ${boostRootPath}/lib64-msvc-12.0/libboost_log-vc120-mt-gd-1_59.lib
+						debug ${boostRootPath}/lib64-msvc-12.0/libboost_system-vc120-mt-gd-1_59.lib
+						debug ${boostRootPath}/lib64-msvc-12.0/libboost_filesystem-vc120-mt-gd-1_59.lib
+						debug ${boostRootPath}/lib64-msvc-12.0/libboost_date_time-vc120-mt-gd-1_59.lib
+						debug ${boostRootPath}/lib64-msvc-12.0/libboost_thread-vc120-mt-gd-1_59.lib
+						debug ${boostRootPath}/lib64-msvc-12.0/libboost_log_setup-vc120-mt-gd-1_59.lib
+						debug ${boostRootPath}/lib64-msvc-12.0/libboost_chrono-vc120-mt-gd-1_59.lib
+						debug ${boostRootPath}/lib64-msvc-12.0/libboost_regex-vc120-mt-gd-1_59.lib
 						debug ${PROJECT_BINARY_DIR}/lib/SystemService/$(Configuration)/SystemService.lib
 						debug ${PROJECT_BINARY_DIR}/lib/ui/PcapReplayer/$(Configuration)/PcapReplayUI.lib
-						debug ${QTLibPath}/Qt5Cored.lib
-						debug ${QTLibPath}/Qt5Guid.lib
-						debug ${QTLibPath}/qtmaind.lib
-						debug ${QTLibPath}/Qt5Widgetsd.lib
+						debug ${QTRootPath}/lib/Qt5Cored.lib
+						debug ${QTRootPath}/lib/Qt5Guid.lib
+						debug ${QTRootPath}/lib/qtmaind.lib
+						debug ${QTRootPath}/lib/Qt5Widgetsd.lib
 						optimized ${PROJECT_SOURCE_DIR}/lib/WpdPack/Lib/x64/wpcap.lib
 						optimized ${PROJECT_SOURCE_DIR}/lib/WpdPack/Lib/x64/Packet.lib
-						optimized ${PROJECT_SOURCE_DIR}/../3rd_party/boost_1_59_0/lib64-msvc-12.0/libboost_log-vc120-mt-1_59.lib
-						optimized ${PROJECT_SOURCE_DIR}/../3rd_party/boost_1_59_0/lib64-msvc-12.0/libboost_system-vc120-mt-1_59.lib
-						optimized ${PROJECT_SOURCE_DIR}/../3rd_party/boost_1_59_0/lib64-msvc-12.0/libboost_filesystem-vc120-mt-1_59.lib
-						optimized ${PROJECT_SOURCE_DIR}/../3rd_party/boost_1_59_0/lib64-msvc-12.0/libboost_date_time-vc120-mt-1_59.lib
-						optimized ${PROJECT_SOURCE_DIR}/../3rd_party/boost_1_59_0/lib64-msvc-12.0/libboost_thread-vc120-mt-1_59.lib
-						optimized ${PROJECT_SOURCE_DIR}/../3rd_party/boost_1_59_0/lib64-msvc-12.0/libboost_log_setup-vc120-mt-1_59.lib
-						optimized ${PROJECT_SOURCE_DIR}/../3rd_party/boost_1_59_0/lib64-msvc-12.0/libboost_chrono-vc120-mt-1_59.lib
-						optimized ${PROJECT_SOURCE_DIR}/../3rd_party/boost_1_59_0/lib64-msvc-12.0/libboost_regex-vc120-mt-1_59.lib
+						optimized ${boostRootPath}/lib64-msvc-12.0/libboost_log-vc120-mt-1_59.lib
+						optimized ${boostRootPath}/lib64-msvc-12.0/libboost_system-vc120-mt-1_59.lib
+						optimized ${boostRootPath}/lib64-msvc-12.0/libboost_filesystem-vc120-mt-1_59.lib
+						optimized ${boostRootPath}/lib64-msvc-12.0/libboost_date_time-vc120-mt-1_59.lib
+						optimized ${boostRootPath}/lib64-msvc-12.0/libboost_thread-vc120-mt-1_59.lib
+						optimized ${boostRootPath}/lib64-msvc-12.0/libboost_log_setup-vc120-mt-1_59.lib
+						optimized ${boostRootPath}/lib64-msvc-12.0/libboost_chrono-vc120-mt-1_59.lib
+						optimized ${boostRootPath}/lib64-msvc-12.0/libboost_regex-vc120-mt-1_59.lib
 						optimized ${PROJECT_BINARY_DIR}/lib/SystemService/$(Configuration)/SystemService.lib
 						optimized ${PROJECT_BINARY_DIR}/lib/ui/PcapReplayer/$(Configuration)/PcapReplayUI.lib
-						optimized ${QTLibPath}/Qt5Core.lib
-						optimized ${QTLibPath}/Qt5Gui.lib
-						optimized ${QTLibPath}/qtmain.lib
-						optimized ${QTLibPath}/Qt5Widgets.lib)
+						optimized ${QTRootPath}/lib/Qt5Core.lib
+						optimized ${QTRootPath}/lib/Qt5Gui.lib
+						optimized ${QTRootPath}/lib/qtmain.lib
+						optimized ${QTRootPath}/lib/Qt5Widgets.lib)
 # target_link_libraries (PcapReplayer optimized ${MyProjectLib_Release_Link})
 
 # Creates a folder "executables" and adds target 

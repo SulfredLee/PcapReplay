@@ -1,6 +1,7 @@
 set(MY_PRODUCT_NUMBER 3)
 set(MY_PRODUCT_VERSION 5)
 set(MY_BUILD_NUMBER 49)
+set (boostRootPath "C:\\boost\\boost_1_59_0")
 
 find_package (Qt5Widgets)
 
@@ -21,7 +22,7 @@ include_directories (${PROJECT_BINARY_DIR}/lib/ui/PcapReplayer
 					${PROJECT_SOURCE_DIR}/app/PcapReplayer
 					${PROJECT_SOURCE_DIR}/app/PcapReplayer/ConditionChecker
 					${PROJECT_SOURCE_DIR}/app/PcapReplayer/PcapReader
-					${PROJECT_SOURCE_DIR}/../3rd_party/boost_1_59_0
+					${boostRootPath}
 					${PROJECT_SOURCE_DIR}/lib/WpdPack/Include
 					${PROJECT_SOURCE_DIR}/lib/SystemService)
 

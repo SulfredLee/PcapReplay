@@ -1,3 +1,4 @@
+set (boostRootPath "C:\\boost\\boost_1_59_0")
 # Collect sources into the variable SYSTEMSERVICE_SOURCES  
 file (GLOB SYSTEMSERVICE_SOURCES
       "*.h"
@@ -9,7 +10,7 @@ source_group("SystemService" FILES ${SYSTEMSERVICE_SOURCES})
 
 # Properties->C/C++->General->Additional Include Directories
 include_directories (.
-					 ${PROJECT_SOURCE_DIR}/../3rd_party/boost_1_59_0)
+					 ${boostRootPath})
 
 # Set Properties->General->Configuration Type to Dynamic Library(.dll)
 # Creates SystemService.dll with the listed sources collected in the variables
