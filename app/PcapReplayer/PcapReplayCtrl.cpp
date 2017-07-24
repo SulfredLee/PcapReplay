@@ -95,14 +95,14 @@ void PcapReplayCtrl::SetCurSendingSpeed(int nCurSpeed)
 void PcapReplayCtrl::SetCurSendingPktTime(const std::string& strTime)
 {
 	char line[1024];
-	strcpy(line, strTime.c_str());
+	strcpy_s(line, sizeof(line), strTime.c_str());
 	emit m_MainWindow.SetCurSendingPktTime(strTime.c_str());
 }
 
 void PcapReplayCtrl::SetNextSendingPktTime(const std::string& strTime)
 {
 	char line[1024];
-	strcpy(line, strTime.c_str());
+	strcpy_s(line, sizeof(line), strTime.c_str());
 	emit m_MainWindow.SetNextSendingPktTime(strTime.c_str());
 }
 
