@@ -3,7 +3,7 @@ set(MY_PRODUCT_NUMBER 3)
 set(MY_PRODUCT_VERSION 5)
 set(MY_BUILD_NUMBER 49)
 
-set (QTRootPath "C:\\Qt\\Qt5.6.2\\5.6\\msvc2013_64")
+set (QTRootPath "C:\\Qt\\Qt5.6.0\\5.6\\msvc2013_64")
 set (boostRootPath "C:\\boost\\boost_1_59_0")
 
 file (GLOB MyProjectBin_src
