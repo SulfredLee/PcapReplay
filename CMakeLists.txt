@@ -1,6 +1,6 @@
 cmake_minimum_required (VERSION 2.8.12)
 
-set (CMAKE_PREFIX_PATH "C:\\Qt\\Qt5.6.0\\5.6\\msvc2013_64\\")
+set (CMAKE_PREFIX_PATH "C:\\Qt\\Qt5.6.2\\5.6\\msvc2013_64\\")
 # set (boostRootPath "C:\\boost\\boost_1_59_0")
 
 # set (CMAKE_PREFIX_PATH "I:\\WorkShop\\Software_Dev\\3rd_party\\Qt5.6.0\\5.6\\msvc2013_64\\")
