@@ -1,8 +1,3 @@
-set(MY_PRODUCT_NUMBER 3)
-set(MY_PRODUCT_VERSION 5)
-set(MY_BUILD_NUMBER 49)
-set (boostRootPath "C:\\boost\\boost_1_59_0")
-
 find_package (Qt5Widgets)
 
 set (PcapReplayUI_path ${PROJECT_SOURCE_DIR}/lib/ui/PcapReplayer)
@@ -22,7 +17,7 @@ include_directories (${PROJECT_BINARY_DIR}/lib/ui/PcapReplayer
 					${PROJECT_SOURCE_DIR}/app/PcapReplayer
 					${PROJECT_SOURCE_DIR}/app/PcapReplayer/ConditionChecker
 					${PROJECT_SOURCE_DIR}/app/PcapReplayer/PcapReader
-					${boostRootPath}
+					${Boost_INCLUDE_DIR}
 					${PROJECT_SOURCE_DIR}/lib/WpdPack/Include
 					${PROJECT_SOURCE_DIR}/lib/SystemService)
 
@@ -34,10 +29,6 @@ add_library (PcapReplayUI
 	${PcapReplayUI_rcc_moc}
 )
 target_link_libraries (PcapReplayUI Qt5::Widgets)
-set_target_properties(PcapReplayUI
-    PROPERTIES 
-	VERSION ${MY_PRODUCT_NUMBER}.${MY_PRODUCT_VERSION}.${MY_BUILD_NUMBER}
-    SOVERSION ${MY_PRODUCT_NUMBER})
 # Creates a folder "libraries" and adds target project (PcapReplayUI.vcproj) under it
 set_property(TARGET PcapReplayUI PROPERTY FOLDER "libraries")
 

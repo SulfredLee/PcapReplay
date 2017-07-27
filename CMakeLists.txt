@@ -1,6 +1,6 @@
 cmake_minimum_required (VERSION 2.8.12)
 
-set (CMAKE_PREFIX_PATH "C:\\Qt\\Qt5.6.2\\5.6\\msvc2013_64\\")
+# set (CMAKE_PREFIX_PATH "C:\\Qt\\Qt5.6.2\\5.6\\msvc2013_64\\")
 # set (boostRootPath "C:\\boost\\boost_1_59_0")
 
 # set (CMAKE_PREFIX_PATH "I:\\WorkShop\\Software_Dev\\3rd_party\\Qt5.6.0\\5.6\\msvc2013_64\\")
@@ -21,6 +21,30 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 # Command to output information to the console
 # Useful for displaying errors, warnings, and debugging
 message ("cxx Flags: " ${CMAKE_CXX_FLAGS})
+
+# Handle Boost libaries
+set(Boost_INCLUDE_DIR "C:\\boost\\boost_1_59_0")
+set(Boost_LIBRARY_DIR "C:\\boost\\boost_1_59_0\\lib64-msvc-12.0")
+set(Boost_USE_STATIC_LIBS   ON)
+find_package (Boost COMPONENTS log system filesystem date_time thread log_setup chrono regex REQUIRED)
+
+message(STATUS "Boost library status:")
+message(STATUS "    version: ${BoosT_VERSION}")
+message(STATUS "    libraries: ${Boost_LIBRARIES}")
+message(STATUS "    include path: ${Boost_INCLUDE_DIR}")
+
+# Handle QT libaries
+set( QT_ROOT "C:\\Qt\\Qt5.6.2\\5.6\\msvc2013_64\\")
+set( QT_INCLUDE_DIR "${QT_ROOT}include")
+set( QT_LIBRARY_DIR "${QT_ROOT}lib")
+set( ENV(CMAKE_PREFIX_PATH) ${QT_ROOT})
+find_package ( QT5 COMPONENTS Core Gui Widgets REQUIRED )
+find_package ( qtmain )
+
+message(STATUS "QT library status:")
+message(STATUS "    version: ${QT_VERSION}")
+message(STATUS "    libraries: ${QT_LIBRARIES}")
+message(STATUS "    include path: ${QT_INCLUDE_DIR}")
 
 # Sub-directories where more CMakeLists.txt exist
 add_subdirectory(app/PcapReplayer)
