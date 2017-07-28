@@ -1,4 +1,6 @@
-find_package (Qt5Widgets)
+find_package( Qt5 REQUIRED
+	Widgets
+)
 
 set (PcapReplayUI_path ${PROJECT_SOURCE_DIR}/lib/ui/PcapReplayer)
 file(GLOB PcapReplayUI_src_proxy "${PcapReplayUI_path}/*.cpp")
