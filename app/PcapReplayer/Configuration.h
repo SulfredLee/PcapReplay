@@ -1,4 +1,5 @@
-#pragma once
+#ifndef CONFIGURATION_H
+#define CONFIGURATION_H
 #include <string>
 #include <vector>
 #include <ctime>
@@ -36,3 +37,4 @@ public:
 	Configuration();
 	~Configuration();
 };
+#endif

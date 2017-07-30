@@ -1,4 +1,5 @@
-#pragma once
+#ifndef PCAPREADERBASE_H
+#define PCAPREADERBASE_H
 #include "Common.h"
 
 #include <set>
@@ -41,3 +42,4 @@ protected:
 	boost::uintmax_t FileSize(const std::string& filename);
 	void ReCalculateCheckSum(u_char* pData, unsigned int unDataLen);
 };
+#endif

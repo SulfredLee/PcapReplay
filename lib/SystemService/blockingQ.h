@@ -1,5 +1,5 @@
-#pragma once
-
+#ifndef BLOCKINGQ_H
+#define BLOCKINGQ_H
 #include <queue>
 
 #include <boost\thread\mutex.hpp>
@@ -55,3 +55,4 @@ public:
 	blockingQ(){}
 	~blockingQ(){}
 };
+#endif

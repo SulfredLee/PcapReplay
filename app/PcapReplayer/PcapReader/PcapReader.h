@@ -1,4 +1,5 @@
-#pragma once
+#ifndef PCAPREADER_H
+#define PCAPREADER_H
 #include "Common.h"
 
 #include <set>
@@ -32,4 +33,4 @@ public:
 	void ParseOnePkt(pcap_t * pcap, struct pcap_pkthdr *header, const u_char *data);
 	void FinishOneFile();
 };
-
+#endif

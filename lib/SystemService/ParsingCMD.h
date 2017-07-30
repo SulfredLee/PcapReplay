@@ -1,4 +1,5 @@
-#pragma once
+#ifndef PARSINGCMD_H
+#define PARSINGCMD_H
 #include <map>
 #include <string>
 
@@ -37,4 +38,4 @@ public:
 
 	std::string Argv2String(const char* temp);
 };
-
+#endif

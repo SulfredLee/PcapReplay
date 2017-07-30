@@ -1,4 +1,5 @@
-#pragma once
+#ifndef SPEEDCONTROL_H
+#define SPEEDCONTROL_H
 #include <boost/asio.hpp>
 #include <boost/date_time/posix_time/posix_time.hpp>
 #include <boost/thread.hpp>
@@ -78,3 +79,4 @@ public:
 	//Override
 	void TimerCallback(int nTimerID);
 };
+#endif

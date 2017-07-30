@@ -1,4 +1,5 @@
-#pragma once
+#ifndef AUTODRIVER_H
+#define AUTODRIVER_H
 #include "Common.h"
 
 #include "myDailyTimer.h"
@@ -53,3 +54,4 @@ protected:
 	void DailyTimeOut();
 	bool IsTimeExpired();
 };
+#endif

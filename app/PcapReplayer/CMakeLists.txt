@@ -37,7 +37,7 @@ file (GLOB MyProjectBin_src
 	  "${PROJECT_SOURCE_DIR}/app/PcapReplayer/PcapReader/*.h")
 
 # include_directories (${PROJECT_SOURCE_DIR}/lib/ui/PcapReplayer)
-include_directories (${PROJECT_SOURCE_DIR}/lib/WpdPack/Include
+include_directories (${LIBPCAP_INCLUDE_DIR}
 					${QT_INCLUDE_DIR}
 					${PROJECT_SOURCE_DIR}/lib/SystemService
 					${PROJECT_SOURCE_DIR}/app/PcapReplayer
@@ -60,12 +60,10 @@ add_dependencies(PcapReplayer SystemService PcapReplayUI)
 # Properties->Linker->Input->Additional Dependencies
 #target_link_libraries (PcapReplayer ${MyProjectLib_link})
 target_link_libraries (PcapReplayer 
-						debug ${PROJECT_SOURCE_DIR}/lib/WpdPack/Lib/x64/wpcap.lib
-						debug ${PROJECT_SOURCE_DIR}/lib/WpdPack/Lib/x64/Packet.lib
+						debug ${LIBPCAP_LIBRARY_DIR}/libpcap.a
 						debug ${PROJECT_BINARY_DIR}/lib/SystemService/$(Configuration)/SystemService.lib
 						debug ${PROJECT_BINARY_DIR}/lib/ui/PcapReplayer/$(Configuration)/PcapReplayUI.lib
-						optimized ${PROJECT_SOURCE_DIR}/lib/WpdPack/Lib/x64/wpcap.lib
-						optimized ${PROJECT_SOURCE_DIR}/lib/WpdPack/Lib/x64/Packet.lib
+						optimized ${LIBPCAP_LIBRARY_DIR}/libpcap.a
 						optimized ${PROJECT_BINARY_DIR}/lib/SystemService/$(Configuration)/SystemService.lib
 						optimized ${PROJECT_BINARY_DIR}/lib/ui/PcapReplayer/$(Configuration)/PcapReplayUI.lib)
 target_link_libraries (PcapReplayer ${Boost_LIBRARIES})

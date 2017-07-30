@@ -1,4 +1,5 @@
-#pragma once
+#ifndef LOGMGR_H
+#define LOGMGR_H
 #include <boost/log/core.hpp>
 #include <boost/log/trivial.hpp>
 #include <boost/log/expressions.hpp>
@@ -51,3 +52,4 @@ public:
 
 	void PrintLog(boost::log::trivial::severity_level lv, const char* format, ...);
 };
+#endif

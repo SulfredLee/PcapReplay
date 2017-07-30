@@ -1,4 +1,5 @@
-#pragma once
+#ifndef NETWORKOUTPUT_H
+#define NETWORKOUTPUT_H
 #include "Common.h"
 
 #include "myTimer.h"
@@ -42,3 +43,4 @@ public:
 protected:
 	void Convert_Time2String(double dTime, std::string& strTime);
 };
+#endif

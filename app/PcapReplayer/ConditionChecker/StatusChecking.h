@@ -1,4 +1,5 @@
-#pragma once
+#ifndef STATUSCHECKING_H
+#define STATUSCHECKING_H
 #include <boost/thread/mutex.hpp>
 #include <boost/date_time/posix_time/posix_time.hpp>
 #include <boost/thread/thread.hpp> 
@@ -31,3 +32,4 @@ public:
 	//Override
 	void ConditionChecker_DataLine(const unsigned char * data, unsigned int MsgLen, const double& arrivalTime);
 };
+#endif

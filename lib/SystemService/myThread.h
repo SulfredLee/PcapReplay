@@ -1,4 +1,5 @@
-#pragma once
+#ifndef MYTHREAD_H
+#define MYTHREAD_H
 #include <boost/thread.hpp>
 
 class myThreadCallBack
@@ -27,4 +28,4 @@ public:
 	void EndThread();
 	bool IsEndThread();
 };
-
+#endif

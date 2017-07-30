@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ADAPTERINFORCTRL_H
+#define ADAPTERINFORCTRL_H
 #include <vector>
 #include <map>
 #include <string>
@@ -7,8 +8,8 @@
 
 #include "Common.h"
 
-#include "Packet32.h"
-#include <ntddndis.h>
+// #include "Packet32.h"
+// #include <ntddndis.h>
 
 class AdapterInfoCtrl
 {
@@ -24,3 +25,4 @@ public:
 private:
 	std::string GetMacAddress(const std::string& strAdapterName);
 };
+#endif

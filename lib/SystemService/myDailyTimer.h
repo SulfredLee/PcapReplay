@@ -1,4 +1,5 @@
-#pragma once
+#ifndef MYDAILYTIMER_H
+#define MYDAILYTIMER_H
 #include "myThread.h"
 
 #include <time.h>
@@ -82,3 +83,4 @@ protected:
 //	std::string MakeStringSpecificTime();
 //	void AddOneDay();
 //};
+#endif

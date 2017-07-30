@@ -1,4 +1,5 @@
-#pragma once
+#ifndef PCAPREADERNETMAP_H
+#define PCAPREADERNETMAP_H
 #include "Common.h"
 
 #include <set>
@@ -42,4 +43,4 @@ protected:
 	void UpdateScrIP(u_char *& data, std::string strScrIP);
 	std::vector<std::string> string_split(const std::string& s, const char& delim);
 };
-
+#endif

@@ -1,5 +1,5 @@
-#pragma once
-
+#ifndef PCAPREPLAYCTRL_H
+#define PCAPREPLAYCTRL_H
 #include "PcapReaderNetMap.h"
 #include "SpeedLimit.h"
 #include "StatusChecking.h"
@@ -73,3 +73,4 @@ public:
 	void StartPlayFromAutoDriver();
 	void ReadNextPcapFile();
 };
+#endif

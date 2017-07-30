@@ -1,5 +1,5 @@
-#pragma once
-
+#ifndef CONFIGURATIONMAKER_H
+#define CONFIGURATIONMAKER_H
 class MainWindow;
 class PcapReplayCtrl;
 class DialogScheduler;
@@ -16,3 +16,4 @@ public:
 protected:
 	void SetAdapter_Output();
 };
+#endif
