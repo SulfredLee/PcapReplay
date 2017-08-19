@@ -535,9 +535,9 @@ quint32 MainWindow::Get_SpeedFactor()
 	return ui->lineEdit_SpeedFactor->text().toUInt();
 }
 
-quint32 MainWindow::Get_SpeedLimit()
+double MainWindow::Get_SpeedLimit()
 {
-	return ui->lineEdit_SpeedLimit->text().toUInt();
+	return ui->lineEdit_SpeedLimit->text().toDouble();
 }
 
 quint32 MainWindow::Get_OffSet()

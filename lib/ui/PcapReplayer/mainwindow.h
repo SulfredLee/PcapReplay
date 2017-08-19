@@ -54,7 +54,7 @@ public:
 
 	
 	quint32 Get_SpeedFactor();
-	quint32 Get_SpeedLimit();
+	double Get_SpeedLimit();
 	quint32 Get_OffSet();
 	quint32 Get_LoopCount();
 	bool Get_Check_SpeedLimit();

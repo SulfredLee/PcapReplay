@@ -189,7 +189,7 @@
         <item>
          <widget class="QCheckBox" name="checkBox_FixSpeed">
           <property name="text">
-           <string>Fix Speed (Bit per Sec)</string>
+           <string>Fix Speed (MBit per Sec)</string>
           </property>
          </widget>
         </item>

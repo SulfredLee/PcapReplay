@@ -2,4 +2,4 @@
 
 LogMgr g_logM;
 Configuration g_Config;
-std::string g_AppName = "PcapReplay 1.1.10.10";
+std::string g_AppName = "PcapReplay 1.1.11.11";

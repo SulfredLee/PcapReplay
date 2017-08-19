@@ -54,7 +54,7 @@ void ConfigurationMaker::GenConfig_MainWin(MainWindow* pMainWindow)
 
 	// handle line edit
 	g_Config.m_dSpeedFactor = pMainWindow->Get_SpeedFactor();
-	g_Config.m_unSpeedLimit = pMainWindow->Get_SpeedLimit();
+	g_Config.m_unSpeedLimit = static_cast<unsigned int>(pMainWindow->Get_SpeedLimit() * 1000 * 1000);
 	g_Config.m_unOffSet = pMainWindow->Get_OffSet();
 	g_Config.m_nLoopCount = pMainWindow->Get_LoopCount();
 

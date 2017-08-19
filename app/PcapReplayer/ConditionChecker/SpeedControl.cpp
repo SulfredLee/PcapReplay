@@ -235,6 +235,12 @@ void SpeedControl::CalculateNextPackageTimeDiff()
 		return;
 	}
 
+	if (m_bFixSpeed)
+	{
+		m_pPcapReplayCtrl->ShowNextSendingPktTime(false);
+		return;
+	}
+
 	boost::mutex::scoped_lock lock(the_mutex);
 	tm* arrivalTimeTM = new tm;
 	tm* relativeTimeTM = new tm;
