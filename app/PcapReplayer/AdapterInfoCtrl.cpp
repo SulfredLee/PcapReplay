@@ -11,7 +11,10 @@ AdapterInfoCtrl::AdapterInfoCtrl()
 	pcap_if_t *pAlldevs;
 	/* Retrieve the device list on the local machine */
 	if (pcap_findalldevs(&pAlldevs, errbuff) == -1)
-		g_logM.PrintLog(boost::log::trivial::error, "Error in pcap_findalldevs: %s", errbuff);
+	{
+		LOGMSG_ERROR(errbuff);
+		//g_logM.PrintLog(boost::log::trivial::error, "Error in pcap_findalldevs: %s", errbuff);
+	}
 
 
 	bool bHasInterface = false;
@@ -44,7 +47,12 @@ AdapterInfoCtrl::AdapterInfoCtrl()
 	}
 
 	if (!bHasInterface)
-		g_logM.PrintLog(boost::log::trivial::error, "Please try running cmd.exe by administrator.\nType sc start npf\nThen restart this app.");
+	{
+		LOGMSG_ERROR("Please try running cmd.exe by administrator.");
+		LOGMSG_ERROR("Type sc start npf");
+		LOGMSG_ERROR("Then restart this app.");
+		//g_logM.PrintLog(boost::log::trivial::error, "Please try running cmd.exe by administrator.\nType sc start npf\nThen restart this app.");
+	}
 }
 
 AdapterInfoCtrl::~AdapterInfoCtrl()

@@ -85,6 +85,9 @@ void ConfigurationMaker::SetAdapter_Output()
 		errbuff			// error buffer
 		)) == NULL)
 	{
-		g_logM.PrintLog(boost::log::trivial::error, "Unable to open the adapter. %s is not supported by WinPcap\n", g_Config.m_AdapterName.c_str());
+		std::ostringstream ss;
+		ss << "Unable to open the adapter. " << g_Config.m_AdapterName << " is not supported by WinPcap";
+		LOGMSG_ERROR(ss.str());
+		//g_logM.PrintLog(boost::log::trivial::error, "Unable to open the adapter. %s is not supported by WinPcap\n", g_Config.m_AdapterName.c_str());
 	}
 }

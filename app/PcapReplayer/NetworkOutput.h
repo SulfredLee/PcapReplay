@@ -8,6 +8,8 @@
 #include <boost/thread.hpp>
 #include <boost/thread/mutex.hpp>
 
+#include <sstream>
+
 class PcapReplayCtrl;
 class NetworkOutput :
 	public myTimerInterface

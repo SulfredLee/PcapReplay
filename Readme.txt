@@ -1,0 +1,1 @@
+1.2.11.12		Sulfred Lee		renew logger, source from https://gist.github.com/Chrisso/1348004

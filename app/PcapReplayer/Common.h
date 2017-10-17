@@ -8,5 +8,5 @@
 
 
 extern std::string g_AppName;
-extern LogMgr g_logM;
+//extern LogMgr g_logM;
 extern Configuration g_Config;

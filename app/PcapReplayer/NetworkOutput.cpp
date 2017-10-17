@@ -21,7 +21,8 @@ void NetworkOutput::ConditionChecker_DataLine(const unsigned char * data, unsign
 {
 	if (m_Adapter == 0)
 	{
-		g_logM.PrintLog(boost::log::trivial::error, "Error Adapter is empty\n");
+		LOGMSG_ERROR("Error Adapter is empty");
+		//g_logM.PrintLog(boost::log::trivial::error, "Error Adapter is empty\n");
 		return;
 	}
 	if (pcap_sendpacket(m_Adapter,
@@ -29,7 +30,10 @@ void NetworkOutput::ConditionChecker_DataLine(const unsigned char * data, unsign
 		MsgLen
 		) != 0)
 	{
-		g_logM.PrintLog(boost::log::trivial::error, "Error sending the packet: %s\n", pcap_geterr(m_Adapter));
+		std::ostringstream ss;
+		ss << "Error sending the packet: " << pcap_geterr(m_Adapter);
+		LOGMSG_ERROR(ss.str());
+		//g_logM.PrintLog(boost::log::trivial::error, "Error sending the packet: %s\n", pcap_geterr(m_Adapter));
 	}
 	SetArrivalTime(arrivalTime);
 	SetCurBitPerSec(GetCurBitPerSec() + MsgLen * 8);

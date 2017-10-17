@@ -13,10 +13,18 @@ void PcapReaderBase::StartReading()
 {
 	char errbuff[PCAP_ERRBUF_SIZE];
 	pcap_t * pcap = pcap_open_offline(m_inputFile.c_str(), errbuff);
-	g_logM.PrintLog(boost::log::trivial::info, "Reading: %s\n", m_inputFile.c_str());
+	{
+		std::ostringstream ss;
+		ss << "Reading: " << m_inputFile.c_str();
+		LOGMSG_ERROR(ss.str());
+		//g_logM.PrintLog(boost::log::trivial::info, "Reading: %s\n", m_inputFile.c_str());
+	}
 	if (pcap == NULL)
 	{
-		g_logM.PrintLog(boost::log::trivial::error, "Error: %s\n", errbuff);
+		std::ostringstream ss;
+		ss << "Error: " << errbuff;
+		LOGMSG_ERROR(ss.str());
+		//g_logM.PrintLog(boost::log::trivial::error, "Error: %s\n", errbuff);
 		return;
 	}
 
