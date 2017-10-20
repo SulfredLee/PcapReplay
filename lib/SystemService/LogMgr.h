@@ -106,6 +106,8 @@ namespace Logging
 		//virtual void Append(std::string szMsg) { ::OutputDebugString(szMsg); }
 		virtual void Append(std::string szMsg)
 		{
+			//using namespace boost::log::trivial;
+
 			switch (m_nLevel)
 			{
 			case Logging::LOG_LEVEL_TRACE:
@@ -150,6 +152,7 @@ namespace Logging
 		CLogger()
 		{
 			m_dwLogStart = getTickCount();
+			boostInit();
 		}
 		~CLogger()
 		{
@@ -178,7 +181,7 @@ namespace Logging
 			{
 				boost::filesystem::path p(szFile);
 				std::ostringstream msg;
-				msg << std::setfill('0') << std::setw(6) << getTickCount() - m_dwLogStart << " ";
+				//msg << std::setfill('0') << std::setw(6) << getTickCount() - m_dwLogStart << " ";
 				msg << "[" << szFunction << "] ";
 				msg << p.filename() << ":" << nLine << " - " << szMsg;
 				//std::string msg;
@@ -201,6 +204,40 @@ namespace Logging
 			//struct timeval tv;
 			//gettimeofday(&tv, 0);
 			//return unsigned((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
+#endif
+		}
+		void boostInit()
+		{
+			const std::string COMMON_FMT("[%TimeStamp%][%Severity%]:  %Message%");
+
+			boost::log::register_simple_formatter_factory< boost::log::trivial::severity_level, char >("Severity");
+
+			//// Output message to console
+			//boost::log::add_console_log(
+			//	std::cout,
+			//	boost::log::keywords::format = COMMON_FMT,
+			//	boost::log::keywords::auto_flush = true
+			//	);
+
+			// Output message to file, rotates when file reached 1mb or at midnight every day. Each log file
+			// is capped at 1mb and total is 20mb
+			boost::log::add_file_log(
+				boost::log::keywords::file_name = "./Log/Log_%Y%m%d_%H%M%S_%5N.log",
+				boost::log::keywords::rotation_size = 1 * 1024 * 1024,
+				boost::log::keywords::max_size = 20 * 1024 * 1024,
+				boost::log::keywords::time_based_rotation = boost::log::sinks::file::rotation_at_time_point(0, 0, 0),
+				boost::log::keywords::format = COMMON_FMT,
+				boost::log::keywords::open_mode = std::ios_base::app,
+				boost::log::keywords::auto_flush = true
+				);
+
+			boost::log::add_common_attributes();
+
+			// Only output message with INFO or higher severity in Release
+#ifndef _DEBUG
+			boost::log::core::get()->set_filter(
+				boost::log::trivial::severity >= boost::log::trivial::info
+				);
 #endif
 		}
 	};
