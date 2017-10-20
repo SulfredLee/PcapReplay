@@ -16,7 +16,7 @@ void PcapReaderBase::StartReading()
 	{
 		std::ostringstream ss;
 		ss << "Reading: " << m_inputFile.c_str();
-		LOGMSG_ERROR(ss.str());
+		LOGMSG_INFO(ss.str());
 		//g_logM.PrintLog(boost::log::trivial::info, "Reading: %s\n", m_inputFile.c_str());
 	}
 	if (pcap == NULL)

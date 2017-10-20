@@ -84,7 +84,7 @@ namespace Logging
 	public:
 		virtual ~ILogTarget() { }
 		virtual bool IsEnabled(LOG_LEVEL lvl) = 0;
-		virtual void Append(std::string szMsg) = 0;
+		virtual void Append(std::string szMsg, LOG_LEVEL lvl) = 0;
 	};
 
 	class CLogTargetBase : public ILogTarget
@@ -104,11 +104,11 @@ namespace Logging
 		CLogTargetDebugger(LOG_LEVEL lvl) : CLogTargetBase(lvl) { }
 		virtual ~CLogTargetDebugger() { }
 		//virtual void Append(std::string szMsg) { ::OutputDebugString(szMsg); }
-		virtual void Append(std::string szMsg)
+		virtual void Append(std::string szMsg, LOG_LEVEL lvl)
 		{
 			//using namespace boost::log::trivial;
 
-			switch (m_nLevel)
+			switch (lvl)
 			{
 			case Logging::LOG_LEVEL_TRACE:
 				BOOST_LOG_TRIVIAL(trace) << szMsg;
@@ -189,7 +189,7 @@ namespace Logging
 
 				for (size_t i = 0; i<m_pTargets.size(); i++)
 					if (m_pTargets[i]->IsEnabled(lvl))
-						m_pTargets[i]->Append(msg.str());
+						m_pTargets[i]->Append(msg.str(), lvl);
 			}
 		}
 	private:
