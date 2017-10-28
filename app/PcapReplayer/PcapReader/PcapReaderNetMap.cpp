@@ -52,7 +52,8 @@ void PcapReaderNetMap::ParseOnePkt(pcap_t * pcap, struct pcap_pkthdr *header, co
 	// handle recalculate checksum
 	if (dstIT != m_mapDstIP.end() || scrIT != m_mapScrIP.end())
 	{
-		ReCalculateCheckSum(pMyData, header->len);
+		ReCalculateCheckSum_IPHeader(pMyData);
+		ReCalculateCheckSum_UDP_Pkt(pMyData, header->len);
 	}
 
 	for (std::set<ConditionChecker*>::iterator it = m_observerList.begin(); it != m_observerList.end(); it++)

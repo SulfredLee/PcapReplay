@@ -67,7 +67,33 @@ boost::uintmax_t PcapReaderBase::FileSize(const std::string& filename)
 	//return in.tellg();
 }
 
-void PcapReaderBase::ReCalculateCheckSum(u_char* pData, unsigned int unDataLen)
+void PcapReaderBase::ReCalculateCheckSum_IPHeader(u_char* pData)
+{
+	// reset checksum
+	pData[24] = 0;
+	pData[25] = 0;
+
+	uint32_t unChecksum = 0;
+	const uint16_t* pD16;
+	pD16 = reinterpret_cast<const uint16_t*>(pData + 14);
+
+	// adding checksum for scr IP and dst IP
+	for (int i = 0; i < 10; i++)
+	{
+		unChecksum += _byteswap_ushort(*pD16++);
+	}
+	while (unChecksum >> 16)
+	{
+		unChecksum = (unChecksum & 0xffff) + (unChecksum >> 16);
+	}
+
+	// set checksum back to data
+	uint16_t un16TempChecksum = static_cast<uint16_t>(~unChecksum);
+	un16TempChecksum = _byteswap_ushort(un16TempChecksum);
+	memcpy((char*)(pData + 24), &un16TempChecksum, sizeof(uint16_t));
+}
+
+void PcapReaderBase::ReCalculateCheckSum_UDP_Pkt(u_char* pData, unsigned int unDataLen)
 {
 	// reset checksum
 	pData[40] = 0;

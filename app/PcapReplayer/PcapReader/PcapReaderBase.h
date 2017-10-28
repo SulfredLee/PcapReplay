@@ -40,5 +40,6 @@ public:
 protected:
 	//std::ifstream::pos_type FileSize(const std::string& filename);
 	boost::uintmax_t FileSize(const std::string& filename);
-	void ReCalculateCheckSum(u_char* pData, unsigned int unDataLen);
+	void ReCalculateCheckSum_IPHeader(u_char* pData);
+	void ReCalculateCheckSum_UDP_Pkt(u_char* pData, unsigned int unDataLen);
 };
